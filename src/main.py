@@ -202,7 +202,7 @@ def get_model(args, device):
         }
         model_state_dict.update(pretrained_dict)
         model.load_state_dict(model_state_dict, strict=True)
-        for layer_number, param in enumerate(0,model.parameters()):
+        for layer_number, param in enumerate(model.parameters(),1):
             param.requires_grad = False if layer_number<210 else True
         print(layer_number)
     return model, criterion, postprocessors
